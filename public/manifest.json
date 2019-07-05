@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Dota2PT",
+  "name": "Dota 2 Progress Tracker",
   "icons": [
     {
       "src": "favicon.ico",
