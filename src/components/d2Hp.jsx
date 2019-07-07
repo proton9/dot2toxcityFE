@@ -1,9 +1,6 @@
 import React, {Component} from 'react';
 import './D2Hp.css';
 import allHeros from './heroes.json';
-import { all } from 'q';
-import { existsTypeAnnotation, arrayExpression } from '@babel/types';
-import { get } from 'http';
 //abbreivated className (Dota2ProgressTracker HomePage)
 // this really needs refactoring asap when i started this off , i didnt know the react conventions
 
@@ -102,47 +99,29 @@ class D2Hp extends React.Component{
     }
   }
   render(){
+
     //var pObj = playerMatches.getMatchObject();
     //console.log (pObj);
     var tableData = this.state.sortedData;
     let w10 ={"headerTitle":"games won" ,"headerClass":"bg-success", "tableData":this.state.w10d};
     let l10 ={"headerTitle":"games lost" ,"headerClass":"bg-danger", "tableData":this.state.l10d};
     return (
-      <div className="D2Hp">
-        <nav className="navbar sticky-top navbar-dark bg-dark shadow-sm p-1 bg-dark ">
-          <a className="navbar-brand" href="#">PatternFinder</a>
-          <div className="navbar-collapse collapse text-white">
-            <ul className="navbar-nav mr-auto">
-              <li className="nav-item">
-                <a className="nav-link" href="#">About Project <span className="sr-only">(current)</span></a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">About Author</a>
-              </li>
-            </ul>
-          </div>
-          <form className="form-inline pull-right">
-            <label className="text-white">Top Pros</label>
-            <Dropdown setId={this.setPlayer.bind(this)}></Dropdown>
-          </form>
-        </nav>
-        <header className="App-header">
-          <div className="row container">
-            <div className="col-md-3">
-            <PlayerCard playerId={this.state.card}></PlayerCard>
-            </div>
-            <div className="col-md-9">
-              <h2>Game stats and Toxicity Report</h2>
-              <div className="row container-fluid bg-dark text-white text-center">
-                <div className="col-md-6"><ResultTable table={w10}> </ResultTable></div>
-                <div className="col-md-6"><ResultTable table={l10}> </ResultTable></div>
+          <header className="App-header">
+            <div className="row container">
+              <div className="col-md-3">
+              <PlayerCard playerId={this.state.card}></PlayerCard>
+              </div>
+              <div className="col-md-9">
+                <h2>Game stats and Toxicity Report</h2>
+                <div className="row container-fluid bg-dark text-white text-center">
+                  <div className="col-md-6"><ResultTable table={w10}> </ResultTable></div>
+                  <div className="col-md-6"><ResultTable table={l10}> </ResultTable></div>
+                </div>
+              </div>
+              <div className="col-md-9 container-fluid">
               </div>
             </div>
-            <div className="col-md-9 container-fluid">
-            </div>
-          </div>
-        </header>
-      </div>
+          </header>
     );
   }
 }
@@ -234,9 +213,9 @@ class PlayerCard extends React.Component {
     }
     const pictureUrl = playerCardObj.profile.avatarfull;
     var playerId  = this.props.playerId;
-    const cardStyle = {position:'fixed'};
+    //const cardStyle = {position:'fixed'};
     return (
-      <div style={cardStyle}>
+      <div >
         <h3>Player Infomation</h3>
         <RenderExternalImage url={playerId.profile.avatarfull}></RenderExternalImage>
         <div className="box">
